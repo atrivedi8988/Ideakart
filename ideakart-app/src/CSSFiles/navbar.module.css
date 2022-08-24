@@ -1,0 +1,26 @@
+
+
+.navbar{
+    margin-top: 0px;
+    background-color: blue;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 100px;
+}
+
+.headAndSearch , .allTags{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.headAndSearch h2{
+    color: yellow;
+}
+
+.headAndSearch button,.headAndSearch input{
+    box-sizing: border-box;
+}
