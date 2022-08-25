@@ -39,6 +39,7 @@ export function Navbar() {
         <Input bg={"gray.100"} placeholder="Search" borderRadius="none" />
         <Button>Submit</Button>
       </HStack>
+      {/* ------------------above code is for mobile serch input and button-------------- */}
       <Box w="100%" h={"50px"} bg={"#2874F0"}>
         <Flex
           // border={"1px solid red"}
@@ -55,7 +56,7 @@ export function Navbar() {
               </Heading>
             </Link>
             <HStack display={{ base: "none", md: "inline-flex" }}>
-              <Input bg={"white"} placeholder="Search" />
+              <Input bg={"white"} placeholder="Search" width={"20rem"} />
               <Button>Submit</Button>
             </HStack>
           </HStack>

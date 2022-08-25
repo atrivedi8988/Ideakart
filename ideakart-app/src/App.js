@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import { AllRoute } from './Routes/AllRoute';
 import { Navbar } from './Components/Navbar';
+import { Footer } from './Components/Footer';
 
 function App() {
   return (
@@ -9,6 +10,7 @@ function App() {
       
       <Navbar/>
       <AllRoute/>
+      <Footer/>
 
       {/* <h1>Idea-Kart-WebSite</h1> */}
     </div>
