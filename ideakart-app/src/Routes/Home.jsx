@@ -3,6 +3,7 @@ import { Cart } from '../Components/Cart'
 import axios from 'axios';
 import { useState } from 'react';
 import { useEffect } from 'react';
+import { Footer } from '../Components/Footer';
 
 const getBooksData = ()=>{
     return axios.get(`https://dry-savannah-48520.herokuapp.com/books`)
@@ -28,6 +29,7 @@ export function Home(){
                 })
             }
         </SimpleGrid>
+        <Footer/>
 
         
 
