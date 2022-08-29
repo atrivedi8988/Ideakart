@@ -4,10 +4,7 @@ import axios from 'axios';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { Footer } from '../Components/Footer';
-
-const getBooksData = ()=>{
-    return axios.get(`https://dry-savannah-48520.herokuapp.com/books`)
-}
+import { getBooksData } from '../api';
 
 export function Home(){
     const [booksData,setBooksData] = useState([]);

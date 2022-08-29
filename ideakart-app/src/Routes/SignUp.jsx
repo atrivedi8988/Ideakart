@@ -17,9 +17,42 @@ import {
   import { useState } from 'react';
   import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
 import { Footer } from '../Components/Footer';
+import { useEffect } from 'react';
+import { signUpData } from '../api';
+
+const initialForm = {
+  first_name:"",
+  last_name:"",
+  mobile:"",
+  email:"",
+  password:""
+}
+
   
   export function SignUp() {
     const [showPassword, setShowPassword] = useState(false);
+    const [formState,setFormState] = useState(initialForm)
+
+    const handleChange = (e)=>{
+      // console.log(e.target.name)
+      const {name,value} = e.target
+      setFormState({
+        ...formState,
+        [name] : value
+      })
+    }
+
+    const handleSubmit = ()=>{
+      signUpData(formState).then((res)=>{
+          alert("your account has been create")
+      })
+    }
+
+    // console.log(formState)
+
+    useEffect(()=>{
+      signUpData()
+    },[])
   
     return (
         <>
@@ -47,28 +80,28 @@ import { Footer } from '../Components/Footer';
                 <Box>
                   <FormControl id="firstName" isRequired>
                     <FormLabel>First Name</FormLabel>
-                    <Input type="text" />
+                    <Input type="text" onChange={handleChange} name="first_name" />
                   </FormControl>
                 </Box>
                 <Box>
                   <FormControl id="lastName">
                     <FormLabel>Last Name</FormLabel>
-                    <Input type="text" />
+                    <Input type="text" onChange={handleChange} name="last_name"  />
                   </FormControl>
                 </Box>
               </HStack>
               <FormControl id="mobile_no" isRequired>
                 <FormLabel>Mobile No.</FormLabel>
-                <Input type="email" />
+                <Input type="number" onChange={handleChange} name="mobile"  />
               </FormControl>
               <FormControl id="email" isRequired>
                 <FormLabel>Email address</FormLabel>
-                <Input type="email" />
+                <Input type="email" onChange={handleChange} name="email"  />
               </FormControl>
               <FormControl id="password" isRequired>
                 <FormLabel>Password</FormLabel>
                 <InputGroup>
-                  <Input type={showPassword ? 'text' : 'password'} />
+                  <Input type={showPassword ? 'text' : 'password'} onChange={handleChange} name="password"  />
                   <InputRightElement h={'full'}>
                     <Button
                       variant={'ghost'}
@@ -103,7 +136,9 @@ import { Footer } from '../Components/Footer';
                   color={'white'}
                   _hover={{
                     bg: 'blue.500',
-                  }}>
+                  }}
+                  onClick={handleSubmit}
+                  >
                   Sign up
                 </Button>
               </Stack>
