@@ -12,11 +12,12 @@ export function Home(){
     const [searchParam,setSearchParam] = useSearchParams("page")
     const initPage = Number(searchParam.get("page")) || 1
     const [page,setPage] = useState(initPage)
+    
     useEffect(()=>{
         getBooksData(page).then((res)=>{
             setBooksData(res.data)
         })
-        setSearchParam({page})
+       setSearchParam({page})
     },[page])
     // console.log(booksData)
 
@@ -38,6 +39,7 @@ export function Home(){
             <Button disabled={page==4} onClick={()=>setPage(page+1)}>Next</Button>
         </HStack>
         </Box>
+        
         
         <Footer/>
 
