@@ -1,7 +1,9 @@
 import { Box, Button, HStack, Image, Text, VStack } from "@chakra-ui/react";
+import {  useNavigate } from "react-router-dom";
 
 export function Cart({data}) {
-    // console.log(data)
+  const navigate = useNavigate()
+
   return (
     <>
     <Box width={"80%"} m="auto" >
@@ -22,7 +24,7 @@ export function Cart({data}) {
             <Text fontSize={"12px"} color="blue.400">{data.price} Rs.</Text>
           </VStack>
           <HStack>
-            <Button>🛒 View Now</Button>
+            <Button onClick={() => navigate(`/siglebookpage/${data.id}`)}>🛒 View Now</Button>
             <Button>
               <img src="https://img.icons8.com/color/48/FFFFFF/details-pane.png" />{" "}
               &nbsp; More details

@@ -12,9 +12,49 @@ import {
     Text,
     useColorModeValue,
   } from '@chakra-ui/react';
+import { useState } from 'react';
+import { useContext } from 'react';
+import { useEffect } from 'react';
+import { signinData } from '../api';
 import { Footer } from '../Components/Footer';
+import { AppContext } from '../Context/AppContext';
+import {Navigate, useNavigate} from "react-router-dom"
   
   export function SignIn() {
+
+    const {isAuth,setIsAuth} = useContext(AppContext)
+    const navigate = useNavigate()
+
+   
+
+    const [formState,setFormState] = useState({
+      email:"",
+      password :""
+    })
+
+    const handleChange = (e)=>{
+      const {name,value} = e.target;
+      setFormState({
+        ...formState,
+        [name]:value
+      })
+    }
+
+    const handleSubmit = ()=>{
+      signinData().then((res)=>{
+        if(res.data.payload.email==formState.email && res.data.payload.password==formState.password ){
+          alert("you are logged in")
+          setIsAuth(true)
+          navigate("/")
+        }
+        else{
+          alert("Wrong credentials")
+        }
+      })
+    }
+
+   
+    
     return (
         <>
       <Flex
@@ -37,11 +77,11 @@ import { Footer } from '../Components/Footer';
             <Stack spacing={4}>
               <FormControl id="email">
                 <FormLabel>Email address</FormLabel>
-                <Input type="email" />
+                <Input type="email" onChange={handleChange} name="email" />
               </FormControl>
               <FormControl id="password">
                 <FormLabel>Password</FormLabel>
-                <Input type="password" />
+                <Input type="password" onChange={handleChange} name="password" />
               </FormControl>
               <Stack spacing={10}>
                 <Stack
@@ -56,7 +96,9 @@ import { Footer } from '../Components/Footer';
                   color={'white'}
                   _hover={{
                     bg: 'blue.500',
-                  }}>
+                  }}
+                  onClick={handleSubmit}
+                  >
                   Sign in
                 </Button>
               </Stack>
