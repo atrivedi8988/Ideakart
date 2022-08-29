@@ -1,18 +1,24 @@
-import {  Heading, SimpleGrid } from '@chakra-ui/react'
+import {  Box, Button, Heading, SimpleGrid,Text, HStack } from '@chakra-ui/react'
 import { Cart } from '../Components/Cart'
 import axios from 'axios';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { Footer } from '../Components/Footer';
 import { getBooksData } from '../api';
+import { useSearchParams } from 'react-router-dom';
 
 export function Home(){
     const [booksData,setBooksData] = useState([]);
+    const [searchParam,setSearchParam] = useSearchParams("page")
+    const initPage = Number(searchParam.get("page")) || 1
+    const [page,setPage] = useState(initPage)
+    
     useEffect(()=>{
-        getBooksData().then((res)=>{
+        getBooksData(page).then((res)=>{
             setBooksData(res.data)
         })
-    },[])
+       setSearchParam({page})
+    },[page])
     // console.log(booksData)
 
     return (
@@ -26,6 +32,15 @@ export function Home(){
                 })
             }
         </SimpleGrid>
+        <Box>
+        <HStack  w="14%" m="auto"gap={"20px"}>
+            <Button disabled={page==1} onClick={()=>setPage(page-1)}>Prev</Button>
+            <Text fontSize={"lg"} fontWeight="bold">{page}</Text>
+            <Button disabled={page==4} onClick={()=>setPage(page+1)}>Next</Button>
+        </HStack>
+        </Box>
+        
+        
         <Footer/>
 
         
