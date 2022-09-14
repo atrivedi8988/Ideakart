@@ -26,7 +26,7 @@ export function Cart({data}) {
           <HStack>
             <Button onClick={() => navigate(`/siglebookpage/${data.id}`)}>🛒 View Now</Button>
             <Button>
-              <img src="https://img.icons8.com/color/48/FFFFFF/details-pane.png" />{" "}
+              <img src="https://img.icons8.com/color/48/FFFFFF/details-pane.png" alt="more-details" />
               &nbsp; More details
             </Button>
           </HStack>

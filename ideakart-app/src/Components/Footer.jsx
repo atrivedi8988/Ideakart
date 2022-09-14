@@ -1,4 +1,4 @@
-import { Box, Button, Container, Heading, HStack, Image, Link, SimpleGrid, Stack, Text, VStack } from "@chakra-ui/react";
+import { Box, Button, Container, Image, Link, SimpleGrid, Stack, Text } from "@chakra-ui/react";
 
 const ListHeader = ({ children }) => {
   return (
@@ -13,7 +13,7 @@ const ListHeader = ({ children }) => {
 export function Footer(){
   return (
     <>
-    <Box bg="gray.80" color="gray.700">
+    <Box bg="whiteAlpha.900" color="gray.700" mt={"50px"}>
     <Container as={Stack} maxW={'6xl'} py={10}>
         <SimpleGrid columns={{ base: 1, sm: 2, md: 4 }} spacing={8}>
           <Stack align={'flex-start'}>

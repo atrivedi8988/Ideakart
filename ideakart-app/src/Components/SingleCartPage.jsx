@@ -1,14 +1,10 @@
 import {
   Box,
   Button,
-  ButtonGroup,
-  Flex,
-  Heading,
   HStack,
   Image,
   Table,
   TableContainer,
-  TableCaption,
   Text,
   Thead,
   VStack,
@@ -17,7 +13,6 @@ import {
   Td,
   Th,
   Link,
-  SimpleGrid,
   Stack,
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
@@ -117,7 +112,7 @@ export function SingleCartPage() {
     getBooksDataById(params.id).then((res)=>{
       setData(res.data)
     })
-  },[])
+  },[params.id])
   return (
     <>
       <Box
@@ -186,6 +181,7 @@ export function SingleCartPage() {
                 <img
                   width="30px"
                   src="https://img.icons8.com/external-febrian-hidayat-flat-febrian-hidayat/64/000000/external-Refresh-user-interface-febrian-hidayat-flat-febrian-hidayat.png"
+                  alt="refresh-icon"
                 />
               </Button>
             </VStack>
@@ -194,7 +190,7 @@ export function SingleCartPage() {
                {data.title}
               </Text>
             </Box>
-            <Box bg="#f5f5f5" border="1px solid rgb(227, 227, 227)" p="20px">
+            <Box bg="whiteAlpha.100" border="1px solid rgb(227, 227, 227)" p="20px">
               <Text textAlign="left" fontSize="3xl" mb="20px">
                 {data.author} {data.title}
               </Text>
@@ -215,7 +211,7 @@ export function SingleCartPage() {
           <Text fontSize="4xl" textAlign="left" mt="30px">
             Why you should read Chemistry for Beginners (Classic Reprint) 
           </Text>
-          <Box bg="#f5f5f5" p="20px" border="1px solid rgb(227, 227, 227)">
+          <Box bg="whiteAlpha.100" p="20px" border="1px solid rgb(227, 227, 227)">
             <Text>
               <b>This book</b> has been written by <b>{data.author},</b>{" "}
               who has written books like Chemistry for Beginners (Classic

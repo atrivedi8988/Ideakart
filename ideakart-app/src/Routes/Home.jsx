@@ -1,6 +1,5 @@
 import {  Box, Button, Heading, SimpleGrid,Text, HStack } from '@chakra-ui/react'
 import { Cart } from '../Components/Cart'
-import axios from 'axios';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { Footer } from '../Components/Footer';
@@ -18,7 +17,7 @@ export function Home(){
             setBooksData(res.data)
         })
        setSearchParam({page})
-    },[page])
+    },[page,setSearchParam])
     // console.log(booksData)
 
     return (
@@ -34,9 +33,9 @@ export function Home(){
         </SimpleGrid>
         <Box>
         <HStack  w="14%" m="auto"gap={"20px"}>
-            <Button disabled={page==1} onClick={()=>setPage(page-1)}>Prev</Button>
+            <Button disabled={page===1} onClick={()=>setPage(page-1)}>Prev</Button>
             <Text fontSize={"lg"} fontWeight="bold">{page}</Text>
-            <Button disabled={page==4} onClick={()=>setPage(page+1)}>Next</Button>
+            <Button disabled={page===4} onClick={()=>setPage(page+1)}>Next</Button>
         </HStack>
         </Box>
         

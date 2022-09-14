@@ -14,15 +14,14 @@ import {
   } from '@chakra-ui/react';
 import { useState } from 'react';
 import { useContext } from 'react';
-import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { signinData } from '../api';
 import { Footer } from '../Components/Footer';
 import { AppContext } from '../Context/AppContext';
-import {Navigate, useNavigate} from "react-router-dom"
   
   export function SignIn() {
 
-    const {isAuth,setIsAuth} = useContext(AppContext)
+    const {setIsAuth} = useContext(AppContext)
     const navigate = useNavigate()
 
    
@@ -42,7 +41,7 @@ import {Navigate, useNavigate} from "react-router-dom"
 
     const handleSubmit = ()=>{
       signinData().then((res)=>{
-        if(res.data.payload.email==formState.email && res.data.payload.password==formState.password ){
+        if(res.data.payload.email===formState.email && res.data.payload.password===formState.password ){
           alert("you are logged in")
           setIsAuth(true)
           navigate("/")

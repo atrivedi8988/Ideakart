@@ -1,4 +1,4 @@
-import { Box, Container, Text, VStack } from "@chakra-ui/react";
+import { Text, VStack } from "@chakra-ui/react";
 import { Footer } from "../Components/Footer";
 
 export function About() {
