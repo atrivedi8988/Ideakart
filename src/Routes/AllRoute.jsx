@@ -21,17 +21,13 @@ export function AllRoute() {
       <Route
         path="/about"
         element={
-          <PrivateRoutes>
             <About />
-          </PrivateRoutes>
         }
       />
       <Route
         path="/contact"
         element={
-          <PrivateRoutes>
             <Contact />
-          </PrivateRoutes>
         }
       />
       <Route path="/sign_in" element={<SignIn />} />
