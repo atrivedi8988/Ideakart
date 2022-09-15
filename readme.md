@@ -23,7 +23,7 @@ In case of any suggestion and query feel free to connect us.
 
 ### Netlify Link
  
-https://bathandbodywork.netlify.app/
+https://ideakart-hhic5y3ev-atrivedi8988.vercel.app
   
 - *STEP*
   1.  First you have to do sign up
